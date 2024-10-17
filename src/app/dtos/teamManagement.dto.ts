@@ -19,11 +19,3 @@ export class TeamRespDto {
   })
   created_at: string;
 }
-
-export class TeamDeleteRespDto {
-  @ApiProperty({
-    description: 'Is deleted?',
-    example: true,
-  })
-  ok: boolean;
-}

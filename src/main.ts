@@ -15,8 +15,8 @@ async function bootstrap() {
   app.enableCors({ origin: true, credentials: true });
 
   const config = new DocumentBuilder()
-    .setTitle('User management')
-    .setDescription('User management admin API')
+    .setTitle('Apsis API')
+    .setDescription('Apsis RnD backend coding assignment')
     .setVersion('1.0')
     .build();
 
