@@ -10,13 +10,13 @@ import {
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ValidationErrorDto } from '../dtos/errors.dto';
-import { CounterService } from '../../domain/stepTracking';
 import { DeleteRespDto } from '../dtos/common.dto';
 import { CounterRespDto } from '../dtos/stepTracking.dto';
 import {
+  CounterService,
   CreateCounterDto,
   IncrementCounterDto,
-} from '../../domain/stepTracking/dtos/counter.dto';
+} from '../../domain/stepTracking';
 import { TeamService } from '../../domain/teamManagement';
 
 @ApiTags('Step Tracking')

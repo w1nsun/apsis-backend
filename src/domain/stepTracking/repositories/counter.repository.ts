@@ -5,6 +5,7 @@ export interface ICounterRepository {
   save(counter: Counter): void;
   delete(id: string): boolean;
   findById(id: string): Counter | undefined;
+  findByTeam(teamId: string): Counter[];
   findAll(): Counter[];
 }
 
@@ -29,6 +30,10 @@ export class CounterRepository implements ICounterRepository {
 
   findById(id: string): Counter | undefined {
     return this.counters.find((counter) => counter.id === id);
+  }
+
+  findByTeam(teamId: string): Counter[] {
+    return this.counters.filter((counter) => counter.teamId === teamId);
   }
 
   findAll(): Counter[] {

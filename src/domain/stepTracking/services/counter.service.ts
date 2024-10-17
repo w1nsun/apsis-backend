@@ -37,6 +37,10 @@ export class CounterService {
     return counter;
   }
 
+  findByTeam(teamId: string): Counter[] {
+    return this.counterRepository.findByTeam(teamId);
+  }
+
   private _assertStepsAmount(
     currentValue: number,
     increaseBy: number,

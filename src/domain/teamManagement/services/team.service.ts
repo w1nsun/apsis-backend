@@ -30,6 +30,10 @@ export class TeamService {
     return this.teamRepository.findById(id);
   }
 
+  findAll(): Team[] {
+    return this.teamRepository.findAll();
+  }
+
   private _assertName(name: string): void | never {
     const team = this.teamRepository.findByName(name);
 
