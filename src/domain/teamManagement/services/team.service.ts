@@ -26,6 +26,10 @@ export class TeamService {
     return this.teamRepository.delete(id);
   }
 
+  findById(id: string): Team | undefined {
+    return this.teamRepository.findById(id);
+  }
+
   private _assertName(name: string): void | never {
     const team = this.teamRepository.findByName(name);
 
