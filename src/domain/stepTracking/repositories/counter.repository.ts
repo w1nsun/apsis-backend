@@ -13,7 +13,7 @@ export const ICounterRepository = Symbol('ICounterRepository');
 
 @Injectable()
 export class CounterRepository implements ICounterRepository {
-  private counters: Counter[] = [];
+  counters: Counter[] = [];
 
   save(counter: Counter): void {
     this.counters.push(counter);

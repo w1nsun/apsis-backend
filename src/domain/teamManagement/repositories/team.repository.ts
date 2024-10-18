@@ -13,7 +13,7 @@ export const ITeamRepository = Symbol('ITeamRepository');
 
 @Injectable()
 export class TeamRepository implements ITeamRepository {
-  private teams: Team[] = [];
+  teams: Team[] = [];
 
   save(team: Team): void {
     this.teams.push(team);
