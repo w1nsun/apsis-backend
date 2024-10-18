@@ -1,5 +1,5 @@
-import { ApiTags } from '@nestjs/swagger';
-import { Controller, Get, Param } from '@nestjs/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, HttpStatus, Param } from '@nestjs/common';
 import { LeaderboardService } from '../../domain/leaderboard/services/leaderboard.service';
 import {
   LeaderboardCounterRespDto,
@@ -7,6 +7,7 @@ import {
 } from '../dtos/leaderboard.dto';
 import { LeaderboardCounter } from '../../domain/leaderboard/entities/leaderboardCounter.entity';
 import { LeaderboardTeam } from '../../domain/leaderboard/entities/leaderboardTeam.entity';
+import { DeleteRespDto } from '../dtos/common.dto';
 
 @ApiTags('Leaderboard')
 @Controller('leaderboard')
@@ -14,6 +15,7 @@ export class LeaderboardController {
   constructor(private readonly leaderboardService: LeaderboardService) {}
 
   @Get('teams/:teamId/total')
+  @ApiResponse({ type: LeaderboardTeamRespDto, status: HttpStatus.OK })
   async getTeamSteps(
     @Param('teamId') teamId: string,
   ): Promise<LeaderboardTeamRespDto> {
@@ -27,6 +29,11 @@ export class LeaderboardController {
   }
 
   @Get('teams/:teamId')
+  @ApiResponse({
+    type: LeaderboardCounterRespDto,
+    isArray: true,
+    status: HttpStatus.OK,
+  })
   async getTeamCountersSteps(
     @Param('teamId') teamId: string,
   ): Promise<LeaderboardCounterRespDto[]> {
@@ -44,6 +51,11 @@ export class LeaderboardController {
   }
 
   @Get('teams')
+  @ApiResponse({
+    type: LeaderboardTeamRespDto,
+    isArray: true,
+    status: HttpStatus.OK,
+  })
   async getTeamsSteps(): Promise<LeaderboardTeamRespDto[]> {
     const teamCountersSteps = await this.leaderboardService.getTeamsSteps();
 
