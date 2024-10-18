@@ -6,7 +6,7 @@ import { LoggerModule } from './logger';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.development.local'],
+      envFilePath: ['env.production', '.env.development.local'],
       load: [configuration],
       isGlobal: true,
     }),
